@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Apostas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <form id="myForm">
+    <label for="valorInicial">Valor Inicial:</label>
+    <input type="number" id="valorInicial" required>
+
+    <label for="odd">Odd:</label>
+    <input type="number" step="0.01" id="odd" required>
+
+    <label for="valorPretendido">Valor Pretendido:</label>
+    <input type="number" id="valorPretendido" required>
+
+    <input type="submit" value="Calcular">
+  </form>
+
+  <div id="output"></div>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var valorInicial = parseFloat(document.getElementById('valorInicial').value);
+      var odd = parseFloat(document.getElementById('odd').value);
+      var valorPretendido = parseInt(document.getElementById('valorPretendido').value);
+      var cont = 0;
+      var output = '';
+
+      while (valorInicial < valorPretendido) {
+        cont++;
+        valorInicial *= odd;
+        output += "Ordem" + cont + "°" + "<br>";
+        output += "Valor da aposta = " + (valorInicial / odd).toFixed(2) + " * " + odd + " = " + valorInicial.toFixed(2) + " R$" +"<br>";
+        output += "Valor do lucro = " + (-1 * ((valorInicial / odd) - valorInicial)).toFixed(2) + " R$" +"<br>";
+        output += "--------------------------------------------------------<br>";
+      }
+
+      document.getElementById('output').innerHTML = output;
+    });
+  </script>
+</body>
+</html>
