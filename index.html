@@ -58,7 +58,7 @@
       while (valorInicial < valorPretendido) {
         cont++;
         valorInicial *= odd;
-        output += "Ordem" + cont + "°" + "<br>";
+        output += "Ordem: " + cont + "°" + "<br>";
         output += "Valor da aposta = " + (valorInicial / odd).toFixed(2) + " * " + odd + " = " + valorInicial.toFixed(2) + " R$" +"<br>";
         output += "Valor do lucro = " + (-1 * ((valorInicial / odd) - valorInicial)).toFixed(2) + " R$" +"<br>";
         output += "--------------------------------------------------------<br>";
